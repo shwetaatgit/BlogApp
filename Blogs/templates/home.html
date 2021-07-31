@@ -6,7 +6,9 @@
         font-size: 18px;
         background-color: #fdfdfd;
     }
-    
+    .centre{
+        text-align: center;
+    }
     .head_text {
         color: white;
     }
@@ -15,23 +17,11 @@
         box-shadow: 0 16px 48px #E3E7EB;
     }
 </style>
-
-<header class="masthead">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class=" col-md-8 col-md-10 mx-auto">
-                <div class="site-heading">
-                    <h2 class=" site-heading my-4 mt-3 text-dark">BLOGS!! </h2>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+<br>
+<h2 class="centre">BLOGS!! </h2>
+ 
 <div class="container">
     <div class="row">
-        <!-- Blog Entries Column -->
-        
         <div class="col-md-8 mt-3 left">
             {% for blog in blog_list %}
             <div class="card mb-4">
