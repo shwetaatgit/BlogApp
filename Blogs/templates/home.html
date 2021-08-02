@@ -1,5 +1,20 @@
 {% extends "base.html" %} 
 {% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+<link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" 
+    integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" 
+    integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <style>
     body {
         font-family: "Roboto", sans-serif;
@@ -9,31 +24,72 @@
     .centre{
         text-align: center;
     }
-    .head_text {
-        color: white;
-    }
-    
-    .card {
-        box-shadow: 0 16px 48px #E3E7EB;
+    .cards{
+        padding: 10px;
+        height: 200px;
     }
 </style>
 <br>
 <h2 class="centre">BLOGS!! </h2>
- 
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 mt-3 left">
-            {% for blog in blog_list %}
-            <div class="card mb-4">
+    <div class="slider row ">
+        <!-- row-cols-2 row-cols-md-2 g-4 -->
+        {% for blog in blog_list %}
+        <div class="col" style="padding:10px;">
+            <div class="card h-100" style="height: 200px;">
+            <!-- <img src="..." class="card-img-top" alt="..."> -->
                 <div class="card-body">
-                    <h2 class="card-title">{{ blog.title }}</h2>
-                    <p class="card-text text-muted h6">{{ blog.author }} | {{ blog.published_on}} </p>
-                    <p class="card-text">{{blog.full_content|slice:":100" }}  
-                        <a href="{% url 'blog_detail' blog.slug  %}">Read More..</a></p>
+                    <h5 class="card-title"><b>{{ blog.title }}</b></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ blog.author }} | {{ blog.published_on}}</h6>
+                    <p class="card-text">{{blog.full_content|slice:":100" }}
+                        <a href="{% url 'blog_detail' blog.slug  %}" class="card-link">Read More..</a>
+                    </p>
                 </div>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" 
+integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" 
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script type="text/javascript">
+    $('.slider').slick({
+  dots: true,
+  infinite: false,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // To unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+</script>
 {% endblock %}

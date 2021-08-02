@@ -9,6 +9,7 @@ class blog(models.Model):
     published_on = models.DateTimeField(auto_now_add=True)
     edited_on = models.DateTimeField(auto_now= True)
 
+
     class Meta:
         ordering = ['-published_on']
 
