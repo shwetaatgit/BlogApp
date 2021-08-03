@@ -1,4 +1,5 @@
 {% extends "base.html" %} 
+
 {% block content %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
@@ -36,8 +37,8 @@
         <!-- row-cols-2 row-cols-md-2 g-4 -->
         {% for blog in blog_list %}
         <div class="col" style="padding:10px;">
-            <div class="card" style="height: 250px;">
-            <!-- <img src="..." class="card-img-top" alt="..."> -->
+            <div class="card" style="height: 400px;">
+                <img src="{{ blog.thumb.url }}" class="card-img-top" alt="..." style="height: 155px;">
                 <div class="card-body">
                     <h5 class="card-title"><b>{{ blog.title }}</b></h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{ blog.author }} | {{ blog.published_on}}</h6>

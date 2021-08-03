@@ -8,6 +8,8 @@
       <div class="card-body">
         <h1>{% block title %} {{ object.title }} {% endblock title %}</h1>
         <p class=" text-muted">{{ blog.author }} | {{ blog.published_on }}</p>
+        <img src="{{ blog.thumb.url }}" alt="..." style="height: 170px;">
+        <br><br>
         <p class="card-text ">{{ object.full_content | safe }}</p>
       </div>
     </div>

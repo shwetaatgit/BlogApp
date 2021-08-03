@@ -8,7 +8,7 @@ class blog(models.Model):
     author = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
     published_on = models.DateTimeField(auto_now_add=True)
     edited_on = models.DateTimeField(auto_now= True)
-
+    thumb= models.ImageField(default='default.png', blank= True)
 
     class Meta:
         ordering = ['-published_on']

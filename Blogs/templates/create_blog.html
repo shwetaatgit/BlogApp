@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+    .create-blog{
+        padding: 35px;
+    }
+</style>
 
 <div class="create-blog">
     <h2>Add your Blog here!</h2>
     <form class="site-form" action="{% url 'create_blog' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{form}}
+        <br>
         <input type="submit" value="Create">
     </form>
 </div>
