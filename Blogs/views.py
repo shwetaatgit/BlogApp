@@ -1,15 +1,20 @@
 from django.shortcuts import redirect, render
-from django.views import generic
 from .models import blog
 from . import forms
 
-class BlogList(generic.ListView):
-    queryset = blog.objects.order_by('-published_on')
-    template_name = 'home.html'
+def BlogList(request):
+    blogs = blog.objects.all()
+    context ={
+        'blog_list': blogs
+    }
+    return render(request, "home.html", context)
 
-class BlogDetail(generic.DetailView):
-    model = blog
-    template_name = 'blog_detail.html'
+def BlogDetail(request, slug):
+    blogs_detail = blog.objects.get(slug=slug)
+    context ={
+        'blogs': blogs_detail
+    }
+    return render(request, "blog_detail.html", context)
 
 def createblog(request):
     if request.method=='POST':
